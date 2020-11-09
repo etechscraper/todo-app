@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import Header from './Header';
 import Todos from './Todos';
 
 const Home = () => {
+    const [todo, addTodo] = useState();
+
     return (
         <View >
-            <Header />
-            <Todos />
+            <Header addTodo={addTodo} />
+            <Todos todo={todo}/>
         </View>
     )
 }
