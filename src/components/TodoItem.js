@@ -17,7 +17,7 @@ const TodoItem = (props) => {
             </TouchableHighlight>
 
             <View style={styles.todo}>
-                <Text style={[styles.todoText, {textDecorationLine: status && 'line-through'}]}>{props.todo.item}</Text>
+                <Text style={[styles.todoText, {textDecorationLine: status ? 'line-through' : 'none'}]}>{props.todo.item}</Text>
                 <View style={[styles.status, {backgroundColor: status ? color.green : color.red}]}/>
             </View>
         </View>
