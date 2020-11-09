@@ -1,28 +1,45 @@
-import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, StyleSheet, View, TouchableHighlight, Modal } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { color } from '../../Constants';
+import AddTodo from './AddTodo';
 
-const Header = () => {
+const Header = (props) => {
+    const [modalVisible, setModalVisibility] = useState(false);
+
     return (
         <View style={styles.header}>
+            <Modal 
+                visible={modalVisible} 
+                animationType={"slide"}
+                transparent={true}
+            >
+                <AddTodo setModalVisibility={setModalVisibility} addTodo={props.addTodo} />
+            </Modal>
+
             <Text style={styles.headerText}>Today</Text>
-            <AntDesign name={'pluscircleo'} size={30} color={color.blue} />
+
+            <TouchableHighlight
+                activeOpacity={0.6}
+                underlayColor="transparent"
+                onPress={() => setModalVisibility(true)}>
+                <AntDesign name={'pluscircleo'} size={30} color={color.blue} />
+            </TouchableHighlight>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        margin: 20
+        marginHorizontal: 10,
+        marginVertical: 20
     },
     headerText: {
         fontSize: 30,
-        fontWeight: 700
+        fontWeight: '700'
     }
 });
 
