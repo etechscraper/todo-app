@@ -7,7 +7,7 @@ const Home = () => {
     const [todo, addTodo] = useState();
 
     return (
-        <View >
+        <View>
             <Header addTodo={addTodo} />
             <Todos todo={todo}/>
         </View>
