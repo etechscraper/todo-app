@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TouchableHighlight, Modal } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { color } from '../../Constants';
-import AddTodo from './AddTodo';
+import AddTodoHooks from './AddTodoHooks';
+import AddTodoRedux from './AddTodoRedux';
 
 const Header = (props) => {
     const [modalVisible, setModalVisibility] = useState(false);
@@ -14,7 +15,8 @@ const Header = (props) => {
                 animationType={"slide"}
                 transparent={true}
             >
-                <AddTodo setModalVisibility={setModalVisibility} addTodo={props.addTodo} />
+                {/* <AddTodoHooks setModalVisibility={setModalVisibility} addTodo={props.addTodo} /> */}
+                <AddTodoRedux setModalVisibility={setModalVisibility} />
             </Modal>
 
             <Text style={styles.headerText}>Today</Text>

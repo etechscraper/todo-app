@@ -1,7 +1,8 @@
 import { ADD_TODO } from '../types/types';
 
-export const addTodo = () => {
+export const addTodo = (inputValue) => {
     return {
-        type: ADD_TODO
+        type: ADD_TODO,
+        inputValue
     }
 }

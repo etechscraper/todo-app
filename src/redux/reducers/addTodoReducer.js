@@ -11,11 +11,16 @@ const initialTodos = {
 const addTodoReducer = (state = initialTodos, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [
-        ...state.todos,
-        { id: state.todos.length + 1, item: 'hihi', status: false },
-      ];
-
+      return {
+        todos: [
+          ...state.todos,
+          {
+            id: state.todos.length + 1,
+            item: action.inputValue,
+            status: false,
+          },
+        ],
+      };
     default:
       return state;
   }
