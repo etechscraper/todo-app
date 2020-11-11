@@ -1,14 +1,12 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import TodoItem from './TodoItem';
-import useAddTodo from '../hooks/useAddTodo';
+import { connect } from 'react-redux';
 
-const Todos = (props) => {
-  const todoList = useAddTodo(props.todo);
-
+const TodosRedux = (props) => {
   return (
     <FlatList
-      data={todoList}
+      data={props.todoList}
       extraData={props}
       renderItem={({ item }) => <TodoItem todo={item} />}
       keyExtractor={(item) => item.id.toString()}
@@ -16,4 +14,10 @@ const Todos = (props) => {
   );
 };
 
-export default Todos;
+const mapStateToProps = state => {
+  return {
+    todoList: state.todos,
+  };
+};
+
+export default connect(mapStateToProps)(TodosRedux);
